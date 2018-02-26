@@ -26,6 +26,7 @@ describe('stateFromMarkdown', () => {
     let contentState = stateFromMarkdown(codeMarkdown);
     let rawContentState = convertToRaw(contentState);
     let blocks = removeKeys(rawContentState.blocks);
+
     expect(blocks).toEqual([
       {
         text: "const a = 'b'",

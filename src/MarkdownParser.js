@@ -176,12 +176,10 @@ Lexer.prototype.token = function(src, top, bq) {
 
     // code
     if ((cap = this.rules.code.exec(src))) {
-      console.log(cap[0].length)
-      console.log(src)
       src = src.substring(cap[0].length);
-      console.log(src)
       cap = cap[0].replace(/^`{3}/gm, '');
       cap = cap.replace(/[\n]`{3}/gm, '');
+      cap = cap.replace(/^[\n]+/, '');
       this.tokens.push({
         type: 'code',
         text: !this.options.pedantic ? cap.replace(/\n+$/, '') : cap,
